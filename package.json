@@ -1,0 +1,57 @@
+{
+  "name": "school-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "vitola",
+  "license": "MIT",
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only src/schema",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@types/node": "^15.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-graphql": "^4.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.2.1",
+    "prisma": "^2.22.1",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.22.1",
+    "apollo-server": "^2.24.0",
+    "graphql": "^15.5.0",
+    "graphql-scalars": "^1.9.3",
+    "nexus": "^1.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cross-env lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": "cross-env eslint --fix",
+    "*.{js,css,md}": "cross-env prettier --write"
+  }
+}
