@@ -15,7 +15,8 @@
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only src/schema",
-    "test": "jest"
+    "test": "jest",
+    "commit": "cz"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
@@ -24,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-graphql": "^4.0.0",
@@ -53,5 +55,10 @@
   "lint-staged": {
     "*.js": "cross-env eslint --fix",
     "*.{js,css,md}": "cross-env prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
