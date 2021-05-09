@@ -17,7 +17,8 @@
     "generate:nexus": "ts-node --transpile-only src/schema",
     "test": "jest",
     "commit": "cz",
-    "format": "prettier --write ./src"
+    "format": "prettier --write ./src",
+    "seed": "prisma db seed --preview-feature"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
@@ -43,8 +44,14 @@
   "dependencies": {
     "@prisma/client": "^2.22.1",
     "apollo-server": "^2.24.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "graphql": "^15.5.0",
+    "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.9.3",
+    "graphql-shield": "^7.5.0",
+    "graphql-upload": "^12.0.0",
+    "jsonwebtoken": "^8.5.1",
     "nexus": "^1.0.0"
   },
   "husky": {
