@@ -1,3 +1,4 @@
 src/migrations
 src/generated
 build/
+*.graphql
