@@ -1,6 +1,6 @@
 import { objectType } from 'nexus';
 
-const User = objectType({
+export const User = objectType({
   name: 'User',
   definition(t) {
     t.nonNull.int('id');
@@ -20,5 +20,3 @@ const User = objectType({
     });
   }
 });
-
-export default User;
