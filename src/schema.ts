@@ -1,19 +1,18 @@
 import { asNexusMethod, makeSchema } from 'nexus';
-import Role from './types/role';
 import { DateTimeResolver } from 'graphql-scalars';
-import Query from './graphql/query';
-import User from './types/user';
+import * as models from './models';
+import * as resolvers from './resolvers';
 
 export const DateTime = asNexusMethod(DateTimeResolver, 'date');
 
 export const schema = makeSchema({
-  types: [Query, User, Role, DateTime],
+  types: [DateTime, models, resolvers],
   outputs: {
     schema: __dirname + '/../schema.graphql',
     typegen: __dirname + '/generated/nexus.ts'
   },
   contextType: {
-    module: require.resolve('./types/context'),
+    module: require.resolve('./context'),
     export: 'Context'
   },
   sourceTypes: {
