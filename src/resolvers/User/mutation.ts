@@ -37,5 +37,16 @@ export const UserMutation = extendType({
         });
       }
     });
+
+    t.nonNull.field('deleteUser', {
+      type: 'User',
+      description: 'deletes a user',
+      args: {
+        id: nonNull(intArg())
+      },
+      async resolve(_, { id }, { prisma }) {
+        return await prisma.user.delete({ where: { id } });
+      }
+    });
   }
 });
