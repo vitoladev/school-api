@@ -8,10 +8,11 @@ export const Class = objectType({
     t.list.field('registrations', {
       type: 'Registration',
       resolve: async (parent, __, { prisma }) => {
-        return await prisma.class.findUnique({
-          where: { id: parent.id || undefined }
-        })
-        .registrations();
+        return await prisma.class
+          .findUnique({
+            where: { id: parent.id || undefined }
+          })
+          .registrations();
       }
     });
     t.nonNull.field('createdAt', { type: 'DateTime' });
